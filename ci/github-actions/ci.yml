@@ -1,0 +1,60 @@
+# Verification pipeline: style → static analysis → tests.
+# Copy to .github/workflows/ci.yml in the consuming project.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['8.4']
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mbstring, pdo, sqlite3, pdo_sqlite, bcmath, intl
+          coverage: pcov
+          tools: composer:v2
+
+      - name: Cache Composer
+        uses: actions/cache@v4
+        with:
+          path: ~/.composer/cache
+          key: composer-${{ matrix.php }}-${{ hashFiles('composer.lock') }}
+          restore-keys: composer-${{ matrix.php }}-
+
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist --no-progress
+
+      - name: Prepare app
+        run: |
+          [ -f .env ] || cp .env.example .env
+          php artisan key:generate
+
+      # Layer 1 — code style. Owns formatting so reviews don't.
+      - name: Pint
+        run: ./vendor/bin/pint --test
+
+      # Layer 2 — static analysis. Larastan level 8 (see phpstan.neon).
+      - name: Larastan
+        run: ./vendor/bin/phpstan analyse --no-progress
+
+      # Layer 3 — tests. Acceptance criteria live here. SQLite in-memory keeps CI dependency-free.
+      - name: Pest
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: ':memory:'
+        run: ./vendor/bin/pest --ci --coverage   # add --min=80 once coverage is healthy

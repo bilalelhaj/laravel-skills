@@ -1,0 +1,45 @@
+# Layer 4 — AI review gate. Checks the diff against the SPDD REASONS Canvas (intent),
+# not just style/tests. Copy to .github/workflows/ai-review.yml.
+#
+# Setup:
+#   1. Add repo secret ANTHROPIC_API_KEY.
+#   2. Pin anthropics/claude-code-action to a tag and confirm its input names against its
+#      README for the version you pin — inputs below match the v1 line but may differ.
+name: AI Review Gate
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  spdd-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0   # full history so the base...HEAD diff works
+
+      - name: SPDD intent review
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            Run an SPDD code review on this pull request.
+
+            1. Locate the relevant REASONS Canvas under docs/spdd/*/canvas.md for the changed files.
+               If none exists, flag that the change has no governing canvas (scope creep risk).
+            2. Diff to review: git diff origin/${{ github.base_ref }}...HEAD
+            3. Check, reporting one finding per line `path:line: <severity>: <problem>. <fix>.`:
+               - Intent alignment: every changed file maps to a canvas Operation; no orphan code.
+               - Norms: strict types, Form Request validation, API Resource output, Enums,
+                 no N+1, no env() outside config, no logic in controllers/migrations.
+               - Safeguards: money never float, backward compat, authz via Policy,
+                 mass-assignment allow-list, no hardcoded secrets, scope-out respected.
+               - Each acceptance criterion has a Pest test.
+            4. Post findings as a PR comment, grouped blocker / warning / nit. Skip formatting (Pint owns it).
+            5. End with `VERDICT: ALIGNED` or `VERDICT: DRIFT` + top reasons.
+               Exit non-zero on any blocker so the gate fails the PR.

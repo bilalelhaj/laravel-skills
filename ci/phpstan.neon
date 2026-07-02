@@ -1,0 +1,11 @@
+# Larastan config. Requires: composer require --dev larastan/larastan
+includes:
+    - vendor/larastan/larastan/extension.neon
+
+parameters:
+    level: 8
+    paths:
+        - app
+    # Loosen incrementally instead of lowering level. Examples:
+    # ignoreErrors:
+    #     - '#PHPDoc tag @var#'
