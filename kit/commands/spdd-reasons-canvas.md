@@ -26,7 +26,7 @@ $ARGUMENTS  ← the analysis (preferred) or a direct requirement.
   Each operation should be independently verifiable.
 
 **Governance**
-- **N — Norms**: cross-cutting standards from `.claude/CLAUDE.md` — strict types, Form Request
+- **N — Norms**: cross-cutting standards from `conventions.md` — strict types, Form Request
   validation, API Resources for output, Enums, no N+1, naming, observability/logging.
 - **S — Safeguards**: non-negotiable boundaries — invariants (money never float), backward
   compatibility (existing rows/migrations), security (authz via Policy, mass-assignment
@@ -37,7 +37,7 @@ $ARGUMENTS  ← the analysis (preferred) or a direct requirement.
 - Stay inside the scope from the story/analysis. Do not invent features.
 
 ## Output
-Write `spdd/<NNN>-<slug>/canvas.md` using `.claude/spdd-templates/reasons-canvas.md`.
+Write `spdd/<NNN>-<slug>/canvas.md` using `spdd-templates/reasons-canvas.md`.
 Print the path and a short summary of the Approach + Operations. Tell the user that to
 change the canvas they should NOT hand-edit it — use `/spdd-prompt-update`. Suggest:
 `/spdd-generate @spdd/<NNN>-<slug>/canvas.md`.

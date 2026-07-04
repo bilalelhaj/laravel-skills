@@ -5,7 +5,7 @@ description: Opinionated Pest testing for Laravel — feature-first tests, turni
 
 # Testing Laravel with Pest (the deep version)
 
-CLAUDE.md has the rule (feature-first, AC→test). This skill is the how.
+conventions.md has the rule (feature-first, AC→test). This skill is the how.
 
 ## The pyramid, inverted toward features
 - **Feature tests** (most of them): hit the real route, assert status + JSON shape + computed

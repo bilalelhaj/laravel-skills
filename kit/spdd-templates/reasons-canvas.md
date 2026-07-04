@@ -35,7 +35,7 @@ Files to add / touch, with dependencies (respect Route→Request→Controller→
 ---
 ## N — Norms (cross-cutting)
 - `declare(strict_types=1)`; typed everywhere. Validation in Form Requests. Output via API Resources.
-- Enums over string constants. No N+1. No `env()` outside config. Naming per `.claude/CLAUDE.md`.
+- Enums over string constants. No N+1. No `env()` outside config. Naming per `conventions.md`.
 - <feature-specific norms>
 
 ## S — Safeguards (non-negotiable boundaries)

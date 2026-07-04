@@ -14,7 +14,7 @@ Implement the canvas **task by task, in the order defined in Operations**. For e
 - Follow the exact class names, method signatures, and types from the canvas.
 - Obey **Norms** (style, strict types, Form Requests, API Resources, Enums, no N+1) and
   **Safeguards** (invariants, backward compat, security, scope-out) without exception.
-- Match the surrounding code's idioms and the conventions in `.claude/CLAUDE.md`.
+- Match the surrounding code's idioms and the conventions in `conventions.md`.
 
 ## Rules
 - **No improvisation, no scope creep.** Implement only what Operations defines.

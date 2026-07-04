@@ -27,9 +27,9 @@ Surface edge cases the story did NOT mention. Be more thorough than the story.
 
 ## Constraints
 - No method-level implementation yet. Stay at concept/strategy altitude.
-- Respect `.claude/CLAUDE.md` conventions when proposing direction.
+- Respect `conventions.md` conventions when proposing direction.
 
 ## Output
 Write `spdd/<NNN>-<slug>/analysis.md` (same folder as the story) using
-`.claude/spdd-templates/analysis.md`. Print the path, then list the top risks/edge cases
+`spdd-templates/analysis.md`. Print the path, then list the top risks/edge cases
 for the human to confirm. Suggest: `/spdd-reasons-canvas @spdd/<NNN>-<slug>/analysis.md`.

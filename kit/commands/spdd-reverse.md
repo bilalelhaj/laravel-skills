@@ -33,7 +33,7 @@ a directory. If nothing passed, ask which feature/area to reverse.
    rather than guessing.
 
 ## Output
-Write `spdd/<NNN>-<slug>/canvas.md` using `.claude/spdd-templates/reasons-canvas.md` — the
+Write `spdd/<NNN>-<slug>/canvas.md` using `spdd-templates/reasons-canvas.md` — the
 next free `<NNN>`. Print the path, the `⚠️ ASSUMED` list for the human to confirm, and a
 short summary. From here it's a normal canvas: change behavior via `/spdd-prompt-update`,
 keep it honest with `/spdd-sync`.

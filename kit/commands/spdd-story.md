@@ -27,7 +27,7 @@ Keep each story to ~one page. Use 3 high-level ACs max per story unless the user
 ## Output
 For each story, create `spdd/<NNN>-<slug>/story.md` in the **consuming project**,
 where `<NNN>` is the next free zero-padded sequence number and `<slug>` is a short
-kebab-case title. Use the template at `.claude/spdd-templates/story.md`.
+kebab-case title. Use the template at `spdd-templates/story.md`.
 
 If the user asks to consolidate multiple stories into one, merge them keeping only
 Background, Business Value, Scope In, Scope Out, Acceptance Criteria — strip implementation detail.

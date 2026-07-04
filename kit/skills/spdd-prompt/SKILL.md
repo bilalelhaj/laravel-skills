@@ -26,7 +26,7 @@ differ; this raises the floor.
   Are touched files listed exactly?
 - **O**: Are operations ordered, with method signatures + types, each independently verifiable?
   Could a different dev implement them and land in the same place?
-- **N**: Are the cross-cutting norms from `.claude/CLAUDE.md` present (strict types, validation,
+- **N**: Are the cross-cutting norms from `conventions.md` present (strict types, validation,
   resources, enums, no N+1)?
 - **S (Safeguards)**: Are invariants, backward-compat, security, and **scope-out** all explicit
   and non-negotiable? Money never float. Authz named. Mass-assignment allow-listed.

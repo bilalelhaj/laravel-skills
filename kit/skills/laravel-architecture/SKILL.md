@@ -5,7 +5,7 @@ description: Opinionated Laravel application architecture — where logic lives 
 
 # Laravel architecture (the deep version)
 
-CLAUDE.md has the one-line rules. This skill is the worked reference: when to reach for
+conventions.md has the one-line rules. This skill is the worked reference: when to reach for
 each construct, how to wire patterns, and the anti-patterns to refuse.
 
 ## Where does logic go? (decision table)

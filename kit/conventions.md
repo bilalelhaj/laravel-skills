@@ -2,7 +2,7 @@
 
 Always-on rules for AI-assisted Laravel work. Deeper patterns + worked examples live in
 on-demand **skills** (listed at the end) — this file stays lean on purpose. A project's
-own `CLAUDE.md` overrides this.
+own `conventions.md` overrides this.
 
 > Stack: **detect from the project's `composer.json`** — Laravel + PHP version, and whether
 > Pest / Pint / Larastan are installed. Apply the idioms that version supports: these rules assume
