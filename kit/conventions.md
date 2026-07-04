@@ -63,6 +63,7 @@ No interface with one implementation. No service for a one-liner. Record deliber
 ## Commits
 - Conventional Commits, always English, imperative subject ≤50 chars: `feat:`, `fix:`, `wip:`, `refactor:`, `test:`, `docs:`, `chore:`, `perf:`.
 - Body only when *why* isn't obvious. **No co-author, no "Generated with" trailers** — clean message only.
+- Several agents may work the repo at once — don't be thrown by changes you didn't make. Focus only on your task: stage its files by explicit path (never `git add -A`/`.`), commit only those, leave the rest untouched.
 
 ## Security (never simplified away)
 Validate at the boundary (Form Requests); authorize via Policies. Money = Value Object / integer minor units, never float.
