@@ -48,7 +48,7 @@ app/
 - No `env()` outside config files — read via `config('...')`.
 - No comments — code explains itself (clear names, small methods). Add one only when *why* genuinely isn't derivable from the code (a non-obvious invariant or external constraint). No marker comments.
 - Everything in code is **English** — class/method/variable/column names, enum cases, keys. Only user-facing strings get translated (via lang files).
-- Names: Models singular, tables plural, Actions verb-first (`SuspendAccountAction`), booleans `is/has/can`.
+- Names: Models singular, tables plural, Actions verb-first (`SuspendAccountAction`), Enums suffixed `Enum` (`RoleEnum`, `PaymentTypeEnum`), booleans `is/has/can`.
 
 ## Testing
 Pest, feature-first. Each acceptance criterion → one test, concrete numbers, Given/When/Then in the name.
