@@ -71,3 +71,8 @@ No secrets in code/logs — `config()` + env. Mass-assignment allow-list. Signed
 
 ---
 On-demand skills: **laravel-architecture · laravel-testing · laravel-email · laravel-docker · business-context · spdd-prompt**. Pull when relevant; don't inline their content here.
+
+---
+## Acknowledge before acting (once per session)
+Your **first** response in a session must open with a single line confirming you have read these conventions, will follow them, and are ready — then handle the task, or await one if none was given. Emit it once, before any other output.
+> Example: `Read the Laravel conventions — I'll follow them: SPDD (fix the prompt first), thin edges/fat domain, strict_types, Enums + Value Objects, no N+1, English-only code, gated by Pint · Larastan · Pest. Ready for your prompt.`
