@@ -46,7 +46,7 @@ app/
 - No N+1: eager-load relations; assume `preventLazyLoading()` in non-prod.
 - No logic in migrations / blade / queued job `handle()` beyond dispatch+call.
 - No `env()` outside config files — read via `config('...')`.
-- No comments — code explains itself (clear names, small methods). Add one only when *why* genuinely isn't derivable from the code (a non-obvious invariant or external constraint). No marker comments.
+- No comments — code explains itself (clear names, small methods). Add one only when *why* genuinely isn't derivable from the code (a non-obvious invariant or external constraint). No marker comments. Any comment that is justified must be English and as short and simple as possible.
 - Everything in code is **English** — class/method/variable/column names, enum cases, keys. Only user-facing strings get translated (via lang files).
 - Names: Models singular, tables plural, Actions verb-first (`SuspendAccountAction`), Enums suffixed `Enum` (`RoleEnum`, `PaymentTypeEnum`), booleans `is/has/can`.
 
