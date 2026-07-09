@@ -56,9 +56,11 @@ Unit-test the domain (Actions, Value Objects, math) directly. `RefreshDatabase` 
 
 → Pest patterns, fakes, arch tests, examples: **laravel-testing** skill.
 
-## Laziness (ponytail)
-First rung that works: stdlib → native Laravel → already-installed package → a few lines → only then a new abstraction/dependency.
-No interface with one implementation. No service for a one-liner. Record deliberate shortcuts (and their upgrade path) in the REASONS Canvas Approach/Safeguards — not in code comments.
+## Laziness (ponytail) — least code wins
+Optimize for the fewest lines that still read clearly. Add a line only if the task fails without it — no speculative generality, no unused params, no abstraction with a single caller. If deleting code solves it, delete.
+Solve with existing primitives before writing new code. Check in order, stop at the first that works: PHP stdlib → Laravel's own domains (Collections, query builder, casts, accessors, Enums, policies, notifications, queues, events, validation rules, container, helpers) → already-installed package → a few lines → new abstraction/dependency. Hand-roll only after confirming no native feature covers it.
+No interface with one implementation. No service for a one-liner. Record deliberate shortcuts + upgrade path in the REASONS Canvas Approach/Safeguards, never in code comments.
+Make invalid states unrepresentable so there is nothing to debug — correctness by construction over runtime checks: typed non-nullable props with a valid default (a usable zero value, cf. Go), backed Enums so only valid cases exist, Value Objects that validate in the constructor so callers never re-check. Validate once at the boundary; never re-guard downstream.
 
 ## Commits
 - Conventional Commits, always English, imperative subject ≤50 chars: `feat:`, `fix:`, `wip:`, `refactor:`, `test:`, `docs:`, `chore:`, `perf:`.
